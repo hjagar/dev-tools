@@ -62,7 +62,10 @@ BUILD_DIR="$REPO_ROOT/build"
 ZIP_PATH="$BUILD_DIR/dev-tools.zip"
 rm -rf "$BUILD_DIR"
 mkdir -p "$BUILD_DIR"
-mapfile -t FILES < <(find . -maxdepth 1 -type f ! -name 'Release-Repo.*' -printf '%f\n')
+FILES=()
+while IFS= read -r -d '' f; do
+    FILES+=("${f#./}")
+done < <(find . -maxdepth 1 -type f ! -name 'Release-Repo.*' -print0)
 zip -j "$ZIP_PATH" "${FILES[@]}"
 echo "  Created build/dev-tools.zip"
 
