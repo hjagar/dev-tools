@@ -7,6 +7,7 @@ read -r -p "Remove hjagar/dev-tools? This will delete files and edit your shell 
 INSTALL_DIR="$HOME/.hjagar/dev-tools"
 PARENT_DIR="$HOME/.hjagar"
 COMMENT='# hjagar dev-tools'
+# shellcheck disable=SC2016
 PATH_LINE='export PATH="$HOME/.hjagar/dev-tools:$PATH"'
 
 for rc in "$HOME/.bashrc" "$HOME/.zshrc"; do
