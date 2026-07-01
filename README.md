@@ -12,7 +12,6 @@ Personal dev tools for Git workflow automation. Works on Windows (PowerShell) an
 | `Remove-GitLocalBranches.sh` | Same, for Linux/Mac |
 | `setup.ps1` | Creates `.git-tools.json` in the current repo (Windows) |
 | `setup.sh` | Same, for Linux/Mac |
-| `Release-Repo.ps1 / .sh` | Runs the 5-step release pipeline: lint → semver bump → zip → tag+push → GitHub release |
 
 ---
 
@@ -126,7 +125,7 @@ Run from inside the repo (any branch):
 
 ```powershell
 # Windows
-Release-Repo.ps1 -ReleaseType patch   # or minor / major
+.\Release-Repo.ps1 -ReleaseType patch   # or minor / major
 ```
 ```bash
 # Linux / Mac
@@ -173,7 +172,6 @@ Herramientas personales para automatizar el workflow con Git. Funciona en Window
 | `Remove-GitLocalBranches.sh` | Lo mismo, para Linux/Mac |
 | `setup.ps1` | Crea `.git-tools.json` en el repo actual (Windows) |
 | `setup.sh` | Lo mismo, para Linux/Mac |
-| `Release-Repo.ps1 / .sh` | Pipeline de release en 5 pasos: lint → bump de versión → zip → tag+push → GitHub release |
 
 ---
 
@@ -287,7 +285,7 @@ Ejecutá desde dentro del repo (cualquier rama):
 
 ```powershell
 # Windows
-Release-Repo.ps1 -ReleaseType patch   # o minor / major
+.\Release-Repo.ps1 -ReleaseType patch   # o minor / major
 ```
 ```bash
 # Linux / Mac
