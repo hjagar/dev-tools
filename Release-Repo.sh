@@ -22,6 +22,7 @@ cd "$REPO_ROOT"
 echo "[1/5] Quality gate (shellcheck)..."
 GATE_FAILED=false
 for f in *.sh; do
+    [[ -f "$f" ]] || continue
     echo "  checking $f..."
     if ! shellcheck "$f"; then
         GATE_FAILED=true
@@ -70,8 +71,14 @@ zip -j "$ZIP_PATH" "${FILES[@]}"
 echo "  Created build/dev-tools.zip"
 
 echo "[4/5] Tag + push..."
-git tag -a "$NEXT_VERSION" -m "Release $NEXT_VERSION"
-git push --follow-tags
+if ! git tag -a "$NEXT_VERSION" -m "Release $NEXT_VERSION"; then
+    echo "git tag failed. Aborting."
+    exit 1
+fi
+if ! git push --follow-tags; then
+    echo "git push failed. Aborting."
+    exit 1
+fi
 echo "  Tagged and pushed $NEXT_VERSION."
 
 echo "[5/5] Publishing GitHub release..."
