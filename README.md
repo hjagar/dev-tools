@@ -23,6 +23,7 @@ Personal dev tools for Git workflow automation. Works on Windows (PowerShell) an
 **Linux / Mac**
 - [`fzf`](https://github.com/junegunn/fzf) — interactive selection (`sudo apt install fzf` / `brew install fzf`)
 - `jq` — JSON parsing, optional (falls back to default branches if missing) (`sudo apt install jq` / `brew install jq`)
+- `unzip` — extraction tool (`sudo apt install unzip` / `brew install unzip`)
 
 **Prerequisites for releasing (maintainer)**
 - [`gh`](https://cli.github.com) — GitHub CLI (`winget install GitHub.cli` / `sudo apt install gh` / `brew install gh`)
@@ -183,6 +184,7 @@ Herramientas personales para automatizar el workflow con Git. Funciona en Window
 **Linux / Mac**
 - [`fzf`](https://github.com/junegunn/fzf) — selección interactiva (`sudo apt install fzf` / `brew install fzf`)
 - `jq` — parseo de JSON, opcional (usa valores por defecto si no está) (`sudo apt install jq` / `brew install jq`)
+- `unzip` — herramienta de extracción (`sudo apt install unzip` / `brew install unzip`)
 
 **Requisitos para release (maintainer)**
 - [`gh`](https://cli.github.com) — GitHub CLI (`winget install GitHub.cli` / `sudo apt install gh` / `brew install gh`)

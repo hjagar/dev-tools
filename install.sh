@@ -4,27 +4,30 @@
 
 set -euo pipefail
 
+command -v unzip &> /dev/null || {
+    echo "Error: unzip is required to install dev-tools."
+    echo "Please install it first (e.g. sudo apt install unzip / brew install unzip)."
+    exit 1
+}
+
 INSTALL_DIR="$HOME/.hjagar/dev-tools"
-BASE_URL="https://raw.githubusercontent.com/hjagar/dev-tools/main"
-SCRIPTS=(
-    "Remove-GitLocalBranches.ps1"
-    "Remove-GitLocalBranches.sh"
-    "setup.ps1"
-    "setup.sh"
-    "uninstall.ps1"
-    "uninstall.sh"
-)
+ZIP_URL="https://github.com/hjagar/dev-tools/releases/latest/download/dev-tools.zip"
+ZIP_PATH="$INSTALL_DIR/dev-tools.zip"
 
 echo "Installing hjagar/dev-tools to $INSTALL_DIR ..."
 
 mkdir -p "$INSTALL_DIR"
 
-for script in "${SCRIPTS[@]}"; do
-    echo "  Downloading $script ..."
-    curl -fsSL "$BASE_URL/$script" -o "$INSTALL_DIR/$script"
-done
+# Ensure the zip file is always cleaned up on exit
+trap 'rm -f "$ZIP_PATH"' EXIT
 
-chmod +x "$INSTALL_DIR/Remove-GitLocalBranches.sh" "$INSTALL_DIR/setup.sh" "$INSTALL_DIR/uninstall.sh"
+echo "  Downloading latest release package..."
+curl -fsSL "$ZIP_URL" -o "$ZIP_PATH"
+
+echo "  Extracting files..."
+unzip -o "$ZIP_PATH" -d "$INSTALL_DIR"
+
+chmod +x "$INSTALL_DIR"/*.sh
 
 PATH_LINE="export PATH=\"\$HOME/.hjagar/dev-tools:\$PATH\""
 COMMENT="# hjagar dev-tools"

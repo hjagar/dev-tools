@@ -27,6 +27,6 @@ Scripts look for `.git-tools.json` at the repo root (via `git rev-parse --show-t
 
 ## Install scripts
 
-`install.ps1` and `install.sh` fetch scripts directly from `https://raw.githubusercontent.com/hjagar/dev-tools/main/`. Changes must be **pushed to `main`** before the installers pick them up — the installers do not reference local files.
+`install.ps1` and `install.sh` download the packaged `dev-tools.zip` from the latest GitHub release (`https://github.com/hjagar/dev-tools/releases/latest/download/dev-tools.zip`) and extract it to the target directory. 
 
 Install target: `~/.hjagar/dev-tools/` (both platforms). PATH is wired permanently via registry (Windows) and `.bashrc`/`.zshrc` (Linux/Mac).
