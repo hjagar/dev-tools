@@ -9,7 +9,9 @@ $scripts = @(
     'setup.ps1',
     'setup.sh',
     'uninstall.ps1',
-    'uninstall.sh'
+    'uninstall.sh',
+    'Release-Repo.ps1',
+    'Release-Repo.sh'
 )
 
 Write-Host "Installing hjagar/dev-tools to $installDir ..." -ForegroundColor Cyan

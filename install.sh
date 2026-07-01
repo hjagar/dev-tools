@@ -13,6 +13,8 @@ SCRIPTS=(
     "setup.sh"
     "uninstall.ps1"
     "uninstall.sh"
+    "Release-Repo.ps1"
+    "Release-Repo.sh"
 )
 
 echo "Installing hjagar/dev-tools to $INSTALL_DIR ..."
@@ -24,7 +26,7 @@ for script in "${SCRIPTS[@]}"; do
     curl -fsSL "$BASE_URL/$script" -o "$INSTALL_DIR/$script"
 done
 
-chmod +x "$INSTALL_DIR/Remove-GitLocalBranches.sh" "$INSTALL_DIR/setup.sh" "$INSTALL_DIR/uninstall.sh"
+chmod +x "$INSTALL_DIR/Remove-GitLocalBranches.sh" "$INSTALL_DIR/setup.sh" "$INSTALL_DIR/uninstall.sh" "$INSTALL_DIR/Release-Repo.sh"
 
 PATH_LINE="export PATH=\"\$HOME/.hjagar/dev-tools:\$PATH\""
 COMMENT="# hjagar dev-tools"
