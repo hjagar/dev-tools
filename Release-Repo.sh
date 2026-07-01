@@ -66,7 +66,7 @@ mkdir -p "$BUILD_DIR"
 FILES=()
 while IFS= read -r -d '' f; do
     FILES+=("${f#./}")
-done < <(find . -maxdepth 1 -type f ! -name 'Release-Repo.*' -print0)
+done < <(find . -maxdepth 1 -type f ! -name 'Release-Repo.*' ! -name 'CLAUDE.md' ! -name '.git*' ! -name 'install.*' -print0)
 zip -j "$ZIP_PATH" "${FILES[@]}"
 echo "  Created build/dev-tools.zip"
 

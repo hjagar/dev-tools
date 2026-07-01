@@ -59,7 +59,7 @@ $zipPath  = Join-Path $buildDir 'dev-tools.zip'
 if (Test-Path $buildDir) { Remove-Item $buildDir -Recurse -Force }
 New-Item -ItemType Directory -Path $buildDir | Out-Null
 $files = Get-ChildItem -Path $repoRoot -File |
-    Where-Object { $_.Name -notmatch '^Release-Repo\.' } |
+    Where-Object { $_.Name -notmatch '^(Release-Repo\..*|CLAUDE\.md|\.git.*|install\..*)$' } |
     Select-Object -ExpandProperty FullName
 Compress-Archive -Path $files -DestinationPath $zipPath -Force
 Write-Host "  Created build/dev-tools.zip" -ForegroundColor Green
