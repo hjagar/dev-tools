@@ -42,7 +42,7 @@ if (Test-Path $installDir) {
 
 $parent = Join-Path $HOME '.hjagar'
 if ((Test-Path $parent) -and -not (Get-ChildItem $parent -Force)) {
-    Remove-Item $parent
+    Remove-Item $parent -Force
     Write-Host "Removed $parent" -ForegroundColor Green
 } else {
     Write-Host "$parent not empty or not found (kept)" -ForegroundColor Yellow
