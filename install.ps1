@@ -2,15 +2,8 @@
 # Installs hjagar dev-tools scripts to $HOME\.hjagar\dev-tools and adds them to PATH.
 
 $installDir = Join-Path $HOME '.hjagar\dev-tools'
-$baseUrl = 'https://raw.githubusercontent.com/hjagar/dev-tools/main'
-$scripts = @(
-    'Remove-GitLocalBranches.ps1',
-    'Remove-GitLocalBranches.sh',
-    'setup.ps1',
-    'setup.sh',
-    'uninstall.ps1',
-    'uninstall.sh'
-)
+$zipUrl = 'https://github.com/hjagar/dev-tools/releases/latest/download/dev-tools.zip'
+$zipPath = Join-Path $installDir 'dev-tools.zip'
 
 Write-Host "Installing hjagar/dev-tools to $installDir ..." -ForegroundColor Cyan
 
@@ -19,11 +12,16 @@ if (-not (Test-Path $installDir)) {
     Write-Host "  Created $installDir" -ForegroundColor Green
 }
 
-foreach ($script in $scripts) {
-    $dest = Join-Path $installDir $script
-    $url = "$baseUrl/$script"
-    Write-Host "  Downloading $script ..."
-    Invoke-WebRequest -Uri $url -OutFile $dest -UseBasicParsing
+Write-Host "  Downloading latest release package..."
+Invoke-WebRequest -Uri $zipUrl -OutFile $zipPath -UseBasicParsing
+
+try {
+    Write-Host "  Extracting files..."
+    Expand-Archive -Path $zipPath -DestinationPath $installDir -Force
+} finally {
+    if (Test-Path $zipPath) {
+        Remove-Item -Path $zipPath -Force
+    }
 }
 
 # Add to user PATH (permanent, registry)
