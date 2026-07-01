@@ -41,7 +41,7 @@ fi
 SELF="${BASH_SOURCE[0]}"
 case "$SELF" in
     "$INSTALL_DIR"/*) [ -e "$SELF" ] && rm -f -- "$SELF" ;;
-    *) echo "Running from clone — remove uninstall.sh manually if needed." ;;
+    *) echo "Running from clone - remove dev-tools-uninstall.sh manually if needed." ;;
 esac
 
 echo "Done. Restart your terminal to reload PATH."

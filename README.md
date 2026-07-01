@@ -10,8 +10,8 @@ Personal dev tools for Git workflow automation. Works on Windows (PowerShell) an
 |--------|-------------|
 | `Remove-GitLocalBranches.ps1` | Deletes local branches whose remote was deleted (Windows) |
 | `Remove-GitLocalBranches.sh` | Same, for Linux/Mac |
-| `setup.ps1` | Creates `.git-tools.json` in the current repo (Windows) |
-| `setup.sh` | Same, for Linux/Mac |
+| `dev-tools-setup.ps1` | Creates `.git-tools.json` in the current repo (Windows) |
+| `dev-tools-setup.sh` | Same, for Linux/Mac |
 
 ---
 
@@ -81,11 +81,11 @@ Each repo needs a `.git-tools.json` file at its root to declare which branches a
 
 ```powershell
 # Windows
-setup.ps1
+dev-tools-setup.ps1
 ```
 ```bash
 # Linux / Mac
-setup.sh
+dev-tools-setup.sh
 ```
 
 Or create it manually:
@@ -171,8 +171,8 @@ Herramientas personales para automatizar el workflow con Git. Funciona en Window
 |--------|-------------|
 | `Remove-GitLocalBranches.ps1` | Elimina ramas locales cuyo remote fue borrado (Windows) |
 | `Remove-GitLocalBranches.sh` | Lo mismo, para Linux/Mac |
-| `setup.ps1` | Crea `.git-tools.json` en el repo actual (Windows) |
-| `setup.sh` | Lo mismo, para Linux/Mac |
+| `dev-tools-setup.ps1` | Crea `.git-tools.json` en el repo actual (Windows) |
+| `dev-tools-setup.sh` | Lo mismo, para Linux/Mac |
 
 ---
 
@@ -242,11 +242,11 @@ Cada repo necesita un archivo `.git-tools.json` en la raíz para declarar qué r
 
 ```powershell
 # Windows
-setup.ps1
+dev-tools-setup.ps1
 ```
 ```bash
 # Linux / Mac
-setup.sh
+dev-tools-setup.sh
 ```
 
 O lo creás a mano:

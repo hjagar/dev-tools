@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# setup.sh
+# dev-tools-setup.sh
 # Creates or updates .git-tools.json in the current repo root.
 
 set -euo pipefail
