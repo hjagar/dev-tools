@@ -7,7 +7,9 @@ $scripts = @(
     'Remove-GitLocalBranches.ps1',
     'Remove-GitLocalBranches.sh',
     'setup.ps1',
-    'setup.sh'
+    'setup.sh',
+    'uninstall.ps1',
+    'uninstall.sh'
 )
 
 Write-Host "Installing hjagar/dev-tools to $installDir ..." -ForegroundColor Cyan
