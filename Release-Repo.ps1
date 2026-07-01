@@ -30,7 +30,8 @@ Write-Host "  All shell scripts passed." -ForegroundColor Green
 
 # [2/5] Version bump
 Write-Host "[2/5] Version bump..." -ForegroundColor Cyan
-$lastTag = (git describe --tags --abbrev=0 2>$null).Trim()
+$lastTag = git describe --tags --abbrev=0 2>$null
+if ($lastTag) { $lastTag = $lastTag.Trim() }
 if ($LASTEXITCODE -ne 0 -or [string]::IsNullOrWhiteSpace($lastTag)) {
     $nextVersion = "v1.0.0"
     Write-Host "  No existing tags. Proposing first release $nextVersion." -ForegroundColor Yellow
