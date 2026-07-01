@@ -24,6 +24,11 @@ Personal dev tools for Git workflow automation. Works on Windows (PowerShell) an
 - [`fzf`](https://github.com/junegunn/fzf) — interactive selection (`sudo apt install fzf` / `brew install fzf`)
 - `jq` — JSON parsing, optional (falls back to default branches if missing) (`sudo apt install jq` / `brew install jq`)
 
+**Prerequisites for releasing (maintainer)**
+- [`gh`](https://cli.github.com) — GitHub CLI (`winget install GitHub.cli` / `sudo apt install gh` / `brew install gh`)
+- [`shellcheck`](https://www.shellcheck.net) — shell script linter (`winget install koalaman.shellcheck` / `sudo apt install shellcheck` / `brew install shellcheck`)
+- `zip` — archive tool, Linux/Mac only (`sudo apt install zip` / `brew install zip`)
+
 ---
 
 ## Installation
@@ -112,6 +117,31 @@ Branches listed in `.git-tools.json` and the current branch are always excluded.
 
 ---
 
+## Releasing a new version
+
+> Maintainer-only. Requires `gh`, `shellcheck`, and `zip` (Linux/Mac) in PATH.
+
+Run from inside the repo (any branch):
+
+```powershell
+# Windows
+.\Release-Repo.ps1 -ReleaseType patch   # or minor / major
+```
+```bash
+# Linux / Mac
+./Release-Repo.sh patch   # or minor / major
+```
+
+The script runs 5 steps in order — any failure aborts the rest:
+
+1. **Quality gate** — `shellcheck` checks every `.sh` file. Fails fast if any error found.
+2. **Version bump** — computes next semver from the latest tag (proposes `v1.0.0` if no tags exist). Asks for confirmation before proceeding.
+3. **Package** — creates `build/dev-tools.zip` with all distributable scripts (excludes `Release-Repo.*`).
+4. **Tag + push** — creates annotated tag `vX.Y.Z` and pushes with `--follow-tags`.
+5. **Publish + cleanup** — creates GitHub release with the zip attached and auto-generated notes; removes `build/`.
+
+---
+
 ## `.git-tools.json` reference
 
 ```json
@@ -153,6 +183,11 @@ Herramientas personales para automatizar el workflow con Git. Funciona en Window
 **Linux / Mac**
 - [`fzf`](https://github.com/junegunn/fzf) — selección interactiva (`sudo apt install fzf` / `brew install fzf`)
 - `jq` — parseo de JSON, opcional (usa valores por defecto si no está) (`sudo apt install jq` / `brew install jq`)
+
+**Requisitos para release (maintainer)**
+- [`gh`](https://cli.github.com) — GitHub CLI (`winget install GitHub.cli` / `sudo apt install gh` / `brew install gh`)
+- [`shellcheck`](https://www.shellcheck.net) — linter de shell scripts (`winget install koalaman.shellcheck` / `sudo apt install shellcheck` / `brew install shellcheck`)
+- `zip` — herramienta de archivos, solo Linux/Mac (`sudo apt install zip` / `brew install zip`)
 
 ---
 
@@ -239,3 +274,28 @@ Remove-GitLocalBranches.sh
 ```
 
 Las ramas en `.git-tools.json` y la rama actual siempre quedan excluidas.
+
+---
+
+## Publicar una versión
+
+> Solo para maintainers. Requiere `gh`, `shellcheck`, y `zip` (Linux/Mac) en el PATH.
+
+Ejecutá desde dentro del repo (cualquier rama):
+
+```powershell
+# Windows
+.\Release-Repo.ps1 -ReleaseType patch   # o minor / major
+```
+```bash
+# Linux / Mac
+./Release-Repo.sh patch   # o minor / major
+```
+
+El script ejecuta 5 pasos en orden — cualquier falla aborta el resto:
+
+1. **Control de calidad** — `shellcheck` revisa todos los archivos `.sh`. Falla inmediatamente si encuentra errores.
+2. **Bump de versión** — calcula el próximo semver a partir del último tag (propone `v1.0.0` si no hay tags). Pide confirmación antes de continuar.
+3. **Empaquetado** — crea `build/dev-tools.zip` con todos los scripts distribuibles (excluye `Release-Repo.*`).
+4. **Tag + push** — crea un tag anotado `vX.Y.Z` y lo sube con `--follow-tags`.
+5. **Publicación + limpieza** — crea el release en GitHub con el zip adjunto y notas auto-generadas; elimina `build/`.
