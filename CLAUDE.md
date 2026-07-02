@@ -14,6 +14,7 @@ Every tool ships as a **pair**: a `.ps1` for Windows (PowerShell 5+) and a `.sh`
 |------|---------|
 | `Remove-GitLocalBranches.ps1 / .sh` | Deletes local branches whose remote is gone; reads protected branches from `.git-tools.json` |
 | `dev-tools-setup.ps1 / .sh` | Interactively creates `.git-tools.json` in the current repo |
+| `hdv-release-project.ps1 / .sh` | Runs a 5-step automated release pipeline for Node.js projects |
 | `dev-tools-uninstall.ps1 / .sh` | Confirm-gated uninstaller that completely reverts all system side effects |
 | `install.ps1 / .sh` | Installs the tools by downloading and extracting `dev-tools.zip` from latest release |
 
