@@ -53,7 +53,7 @@ if ($PSCommandPath -and $PSCommandPath.StartsWith($installDir)) {
         Remove-Item $PSCommandPath -Force
     }
 } else {
-    Write-Host "Running from clone - remove uninstall.ps1 manually if needed." -ForegroundColor Gray
+    Write-Host "Running from clone - remove dev-tools-uninstall.ps1 manually if needed." -ForegroundColor Gray
 }
 
 Write-Host "`nDone. Restart your terminal to clear the PATH from the current session." -ForegroundColor Cyan

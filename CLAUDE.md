@@ -13,8 +13,9 @@ Every tool ships as a **pair**: a `.ps1` for Windows (PowerShell 5+) and a `.sh`
 | Pair | Purpose |
 |------|---------|
 | `Remove-GitLocalBranches.ps1 / .sh` | Deletes local branches whose remote is gone; reads protected branches from `.git-tools.json` |
-| `setup.ps1 / .sh` | Interactively creates `.git-tools.json` in the current repo |
-| `install.ps1 / .sh` | Downloads all scripts from GitHub raw to `~/.hjagar/dev-tools/` and adds them to PATH |
+| `dev-tools-setup.ps1 / .sh` | Interactively creates `.git-tools.json` in the current repo |
+| `dev-tools-uninstall.ps1 / .sh` | Confirm-gated uninstaller that completely reverts all system side effects |
+| `install.ps1 / .sh` | Installs the tools by downloading and extracting `dev-tools.zip` from latest release |
 
 ## Per-repo config
 

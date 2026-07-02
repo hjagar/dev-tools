@@ -1,4 +1,4 @@
-# setup.ps1
+# dev-tools-setup.ps1
 # Creates or updates .git-tools.json in the current repo root.
 
 $repoRoot = git rev-parse --show-toplevel 2>$null
